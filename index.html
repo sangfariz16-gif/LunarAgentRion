@@ -41,8 +41,6 @@ img{display:block;max-width:100%}
 .wrap{max-width:1080px;margin:0 auto;padding:0 18px;position:relative;z-index:1}
 h1,h2,h3,.display{font-family:'Cinzel',Georgia,serif;letter-spacing:.02em}
 .gold-text{background:linear-gradient(135deg,#f7e3a1 0%,#e8c268 40%,#b98a2f 70%,#f7e3a1 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
-/* preview banner */
-.preview-bar{position:sticky;top:0;z-index:60;background:#f5b942;color:#241a02;text-align:center;font-size:13px;font-weight:700;padding:8px 12px;letter-spacing:.02em}
 /* header */
 header.site{position:sticky;top:0;z-index:50;background:rgba(5,8,26,.88);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
 header.site .bar{display:flex;align-items:center;gap:14px;max-width:1080px;margin:0 auto;padding:12px 18px}
@@ -188,7 +186,6 @@ footer .f-logo{font-family:'Cinzel',Georgia,serif;color:var(--gold);font-size:16
 </style>
 </head>
 <body>
-<div class="preview-bar">PREVIEW — Contract not deployed yet. Mint is disabled. Figures shown are the planned specification, not live on-chain values.</div>
 <header class="site">
   <div class="bar">
     <a class="logo" href="#top"><span class="moon-dot"></span>LunarAgentRion</a>
@@ -214,10 +211,10 @@ footer .f-logo{font-family:'Cinzel',Georgia,serif;color:var(--gold);font-size:16
         <h1 class="gold-text">LunarAgentRion</h1>
         <p class="lede">Eight celestial guardians under one moon, minted only by AI agents holding a Binance <b>.ai Agent ID</b>. Your <b>first 2 mints are FREE</b> — then <b>$0.80 in BNB</b> each, up to <b>20 per wallet</b>.</p>
         <div class="hero-cta">
-          <button class="btn btn-gold" id="heroMintBtn" type="button" disabled>Mint — opens soon</button>
+          <button class="btn btn-gold" id="heroMintBtn" type="button">Mint now</button>
           <a class="btn btn-ghost" href="#collection">View the collection</a>
         </div>
-        <p class="hero-note">No wallet needed to look around. Minting opens after the contract is deployed — this page will show the live count then.</p>
+        <p class="hero-note">Mint is live. Connect a wallet holding a .ai Agent ID to mint.</p>
       </div>
       <div class="hero-art">
         <figure class="frame">
@@ -235,12 +232,12 @@ footer .f-logo{font-family:'Cinzel',Georgia,serif;color:var(--gold);font-size:16
 
   <!-- LIVE STATS (placeholders until deploy) -->
   <div class="stats" id="liveStats">
-    <div class="stat"><div class="k">Minted</div><div class="v" id="statMinted">&mdash;</div><div class="s">of 4,444 &middot; preview</div></div>
+    <div class="stat"><div class="k">Minted</div><div class="v" id="statMinted">&mdash;</div><div class="s">of 4,444</div></div>
     <div class="stat"><div class="k">Price</div><div class="v" style="font-size:19px">2 FREE</div><div class="s">then $0.80 in BNB</div></div>
     <div class="stat"><div class="k">Max per wallet</div><div class="v">20</div><div class="s">2 free + 18 paid</div></div>
     <div class="stat"><div class="k">Bonus token</div><div class="v" style="font-size:19px">120,000 RION</div><div class="s">per paid mint*</div></div>
   </div>
-  <p class="fine" id="statNote" style="margin-top:0">Live stats activate after the contract is deployed. *RION economics are proposed — pending confirmation.</p>
+  <p class="fine" id="statNote" style="margin-top:0">Live stats read from the contract. *120,000 RION per paid mint, claimable on-chain.</p>
 
   <!-- MOON STATUS — the moon fills and glows brighter as mints grow -->
   <div class="moon-widget" id="moonWidget">
@@ -256,7 +253,7 @@ footer .f-logo{font-family:'Cinzel',Georgia,serif;color:var(--gold);font-size:16
       <div class="price">2 FREE, then $0.80 in BNB</div>
       <div class="sub"><span id="mp-block">BNB Chain &middot; block &mdash;</span></div>
       <div class="phase" id="moonPhase">New moon &middot; mint hasn&rsquo;t opened</div>
-      <div class="sub" id="mp-note">Preview &middot; contract not deployed yet</div>
+      <div class="sub" id="mp-note">Loading live count&hellip;</div>
     </div>
   </div>
 
@@ -274,7 +271,7 @@ footer .f-logo{font-family:'Cinzel',Georgia,serif;color:var(--gold);font-size:16
       <div class="step">
         <div class="n">02</div>
         <h3>Point your agent at the mint</h3>
-        <p>Your agent calls <code>mint(uint256 quantity)</code> on the contract — or mint from this page once live. First 2 mints per wallet are free (gas only), then $0.80 in BNB each, up to 20 per wallet.</p>
+        <p>Your agent calls <code>mint(uint256 quantity)</code> on the contract — or mint from this page. First 2 mints per wallet are free (gas only), then $0.80 in BNB each, up to 20 per wallet.</p>
       </div>
       <div class="step">
         <div class="n">03</div>
@@ -282,7 +279,7 @@ footer .f-logo{font-family:'Cinzel',Georgia,serif;color:var(--gold);font-size:16
         <p>Your LunarAgentRion NFT lands in your wallet on BNB Chain. Each paid mint also earns <b>120,000 RION</b>* — claimable after mint.</p>
       </div>
     </div>
-    <p class="fine">*Proposed token economics — pending confirmation.</p>
+    <p class="fine">*Live token economics — RION is deployed at 0xA51ae5559e6804233F6C4657759337BC78A074B0.</p>
   </section>
 
   <!-- COLLECTION -->
@@ -376,7 +373,7 @@ footer .f-logo{font-family:'Cinzel',Georgia,serif;color:var(--gold);font-size:16
         <tr><td>Free mints</td><td><b>0 RION</b></td></tr>
       </table>
     </div>
-    <p class="fine">*Proposed token economics — pending confirmation. Max paid mints across the whole collection is 4,000 (4,444 supply minus 444 free), so the 480M pool exactly covers the worst case. RION is a bonus for minters, not an investment product — no return is promised.</p>
+    <p class="fine">*Live token economics — RION is deployed. Max paid mints across the whole collection is 3,998, so the 480M pool covers the worst case with room to spare. RION is a bonus for minters, not an investment product — no return is promised.</p>
   </section>
 
   <!-- ROADMAP -->
@@ -385,7 +382,7 @@ footer .f-logo{font-family:'Cinzel',Georgia,serif;color:var(--gold);font-size:16
     <h2>From first mint to the moon</h2>
     <p class="sub">No dates are promised — each phase starts when the previous one is done.</p>
     <div class="road">
-      <div class="phase"><div class="ph">Phase 1</div><h3>Launch</h3><p>Contracts deploy, mint opens — first 2 free per wallet, then $0.80 in BNB. All 4,444 metadata live.</p></div>
+      <div class="phase"><div class="ph">Phase 1</div><h3>Launch</h3><p>Contracts deployed, mint open — first 2 free per wallet, then $0.80 in BNB. All 4,444 metadata live.</p></div>
       <div class="phase"><div class="ph">Phase 2</div><h3>RION claim</h3><p>Bonus token claim opens for paid minters. 120,000 RION per paid mint, claimable from your wallet.</p></div>
       <div class="phase"><div class="ph">Phase 3</div><h3>Trading</h3><p>Secondary trading opens. Guardians change hands on marketplaces — collecting is open to everyone, minting stays agent-only.</p></div>
       <div class="phase"><div class="ph">Phase 4</div><h3>Guardians grow</h3><p>Holders vote on the next guardian art and the next moonlit chapter of the collection.</p></div>
@@ -407,8 +404,8 @@ Gate: caller must hold a SPACE ID .ai Agent ID (checked on-chain)
 Price: first 2 mints per wallet FREE (gas only),
        then $0.80 USD in BNB per mint (Chainlink BNB/USD oracle)
 Max: 20 per wallet total
-Bonus: 120,000 RION per PAID mint (proposed)
-Contract: not deployed yet — address will be published here</div>
+Bonus: 120,000 RION per PAID mint (claimable on-chain)
+Contract: 0x1Aeb014656aab5291aF518085cfCb05f0C1E8d4B</div>
     <p class="fine">Always simulate the mint from your own address before sending it. If the simulation reverts, do not send — you would spend gas for nothing.</p>
   </section>
 
@@ -423,9 +420,9 @@ Contract: not deployed yet — address will be published here</div>
         <span id="qty">1</span>
         <button type="button" id="qtyPlus" aria-label="Increase quantity">+</button>
       </div>
-      <div class="mint-total" id="mintTotal">Planned total: <b>FREE</b> — your first 2 mints cost gas only.</div>
-      <button class="btn btn-gold" id="mintBtn" type="button" disabled>Mint — opens soon</button>
-      <p class="fine" id="mintNote">Mint is disabled in this preview. The contract is not deployed yet — the button activates when mint opens.</p>
+      <div class="mint-total" id="mintTotal">Total: <b>FREE</b> — your first 2 mints cost gas only.</div>
+      <button class="btn btn-gold" id="mintBtn" type="button">Mint now</button>
+      <p class="fine" id="mintNote">Agent ID required. Connect your wallet, then mint — first 2 free, then $0.80 in BNB each.</p>
     </div>
   </section>
 
@@ -444,11 +441,11 @@ Contract: not deployed yet — address will be published here</div>
     </details>
     <details>
       <summary>What is RION?</summary>
-      <p>RION is the bonus token for paid mints: 120,000 RION per paid mint (proposed economics). Free mints earn no RION. RION is a bonus for minters, not an investment — no return is promised.</p>
+      <p>RION is the bonus token for paid mints: 120,000 RION per paid mint, claimable on-chain. Total supply 1B — 480M bonus pool, 520M treasury. Free mints earn no RION. RION is a bonus for minters, not an investment — no return is promised.</p>
     </details>
     <details>
       <summary>When does mint open?</summary>
-      <p>Mint opens after the contract is deployed. No date is set yet — this page will show the live minted count and the active Mint button when it opens.</p>
+      <p>Mint is open now — it opened 7 November 2026. First 2 mints per wallet are free, then $0.80 in BNB each, up to 20 per wallet.</p>
     </details>
     <details>
       <summary>Which wallet can I use?</summary>
@@ -465,8 +462,8 @@ Contract: not deployed yet — address will be published here</div>
     <div class="kicker">Contract</div>
     <h2>On-chain, verifiable</h2>
     <div class="contract-box">
-      <p><b>NFT contract:</b> <span class="addr">Not deployed yet — the address and BscScan link will appear here after deployment.</span></p>
-      <p style="margin-top:10px"><b>RION token:</b> <span class="addr">Not deployed yet — proposed economics only.</span></p>
+      <p><b>NFT contract:</b> <span class="addr"><a href="https://bscscan.com/token/0x1Aeb014656aab5291aF518085cfCb05f0C1E8d4B" target="_blank" rel="noopener">0x1Aeb014656aab5291aF518085cfCb05f0C1E8d4B</a></span></p>
+      <p style="margin-top:10px"><b>RION token:</b> <span class="addr"><a href="https://bscscan.com/token/0xA51ae5559e6804233F6C4657759337BC78A074B0" target="_blank" rel="noopener">0xA51ae5559e6804233F6C4657759337BC78A074B0</a></span></p>
       <p style="margin-top:10px"><b>Chain:</b> BNB Chain (56) &middot; <b>Standard:</b> BEP-721 &middot; <b>Supply:</b> 4,444 &middot; <b>Royalty:</b> 5%</p>
     </div>
   </section>
@@ -474,11 +471,11 @@ Contract: not deployed yet — address will be published here</div>
   <!-- SUPPORT -->
   <section id="support">
     <div class="kicker">Support</div>
-    <h2>Follow &amp; share</h2>
+    <h2>Spread the word</h2>
     <div class="support-grid">
       <div class="support-card">
-        <h3>Official X</h3>
-        <p>To be announced. The official account will be linked here as soon as it exists — beware of impersonators.</p>
+        <h3>Post on X</h3>
+        <p>There is no official X account — buyers and supporters post for us. Tap below to share the live mint count on X.</p>
         <button class="btn btn-ghost" id="shareBtn" type="button">Share on X</button>
       </div>
       <div class="support-card">
@@ -498,7 +495,10 @@ Contract: not deployed yet — address will be published here</div>
 <script>
 (function(){
 "use strict";
-var CONTRACT = null; /* preview: no contract deployed yet */
+var CONTRACT = "0x1Aeb014656aab5291aF518085cfCb05f0C1E8d4B";
+var MINT_SEL = "0xa0712d68"; /* mint(uint256) */
+var QUOTE_SEL = "0x51b27bad"; /* quoteFor(address,uint256) */
+var MINTOPEN_SEL = "0x24bbd049"; /* mintOpen() */
 var MAX_SUPPLY = 4444;
 var FREE_PER_WALLET = 2;
 var MAX_PER_WALLET = 20;
@@ -533,7 +533,7 @@ function ethCall(to, data){
 
 /* moon: lit fraction + glow scale with mint progress (0..1) */
 function moonPhaseName(pct){
-  if(pct <= 0) return "New moon \u00b7 mint hasn\u2019t opened";
+  if(pct <= 0) return "New moon \u00b7 mint is open";
   if(pct < 0.25) return "Crescent moon";
   if(pct < 0.5) return "Half moon";
   if(pct < 0.75) return "Gibbous moon";
@@ -551,18 +551,6 @@ function updateMoon(pct){
 }
 
 function readLive(){
-  if(!CONTRACT){
-    setText("statMinted", "\u2014");
-    setText("mp-count", "\u2014");
-    setText("mp-pct", "\u2014");
-    setText("mp-left", "4,444 left");
-    setText("mp-note", "Preview \u00b7 contract not deployed yet");
-    setText("mp-block", "BNB Chain \u00b7 block \u2014");
-    setText("moonPhase", "New moon \u00b7 mint hasn\u2019t opened");
-    setText("statNote", "Live stats activate after the contract is deployed. *RION economics are proposed \u2014 pending confirmation.");
-    updateMoon(0);
-    return;
-  }
   ethCall(CONTRACT, "0x18160ddd").then(function(total){
     var pct = Math.min(1, Math.max(0, total / MAX_SUPPLY));
     setText("statMinted", String(total));
@@ -579,7 +567,7 @@ function readLive(){
   }).catch(function(){});
 }
 
-/* quantity + planned total (preview only — no real mint yet) */
+/* quantity + live total */
 var qty = 1;
 function paidFor(q){ return Math.max(0, q - FREE_PER_WALLET); }
 function updateTotal(){
@@ -588,9 +576,9 @@ function updateTotal(){
   var free = Math.min(qty, FREE_PER_WALLET);
   var txt;
   if(paid === 0){
-    txt = "Planned total: <b>FREE</b> \u2014 your first " + free + " mint" + (free > 1 ? "s" : "") + " cost" + (free > 1 ? "" : "s") + " gas only.";
+    txt = "Total: <b>FREE</b> \u2014 your first " + free + " mint" + (free > 1 ? "s" : "") + " cost" + (free > 1 ? "" : "s") + " gas only.";
   } else {
-    txt = "Planned total: <b>$" + (paid * PRICE_USD).toFixed(2) + " in BNB</b> \u2014 " + free + " free + " + paid + " paid (oracle rate at mint time).";
+    txt = "Total: <b>$" + (paid * PRICE_USD).toFixed(2) + " in BNB</b> \u2014 " + free + " free + " + paid + " paid (oracle rate at mint time).";
   }
   var el = $("mintTotal"); if(el) el.innerHTML = txt;
 }
@@ -604,13 +592,49 @@ function bindQty(id, delta){
 bindQty("qtyMinus", -1);
 bindQty("qtyPlus", 1);
 
-/* mint buttons (disabled in preview) */
-function mintSoon(){
-  var n = $("mintNote");
-  if(n) n.textContent = "Mint is disabled in this preview. The contract is not deployed yet \u2014 the button activates when mint opens.";
+/* live mint — wallet connect + mint(uint256) */
+function pad32(hex){ return "0".repeat(64 - hex.length) + hex; }
+function setNote(t){ var n = $("mintNote"); if(n) n.textContent = t; }
+function setBusy(b){
+  ["mintBtn","heroMintBtn"].forEach(function(id){ var el = $(id); if(el) el.disabled = b; });
+}
+function doMint(){
+  if(!window.ethereum){ setNote("No wallet found in this browser — open this page in a wallet browser (Binance Agentic Wallet / MetaMask) to mint."); return; }
+  setBusy(true);
+  setNote("Connecting wallet\u2026");
+  window.ethereum.request({method:"eth_requestAccounts"}).then(function(accounts){
+    var account = accounts[0];
+    return window.ethereum.request({method:"wallet_switchEthereumChain", params:[{chainId:"0x38"}]}).catch(function(e){
+      if(e && e.code === 4902){
+        return window.ethereum.request({method:"wallet_addEthereumChain", params:[{chainId:"0x38", chainName:"BNB Smart Chain", nativeCurrency:{name:"BNB", symbol:"BNB", decimals:18}, rpcUrls:["https://bsc-dataseed.binance.org/"], blockExplorerUrls:["https://bscscan.com"]}]});
+      }
+      throw e;
+    }).then(function(){ return account; });
+  }).then(function(account){
+    return ethCall(CONTRACT, MINTOPEN_SEL).then(function(open){
+      if(!open) throw new Error("Mint is not open right now.");
+      return account;
+    });
+  }).then(function(account){
+    var data = QUOTE_SEL + pad32(account.slice(2).toLowerCase()) + pad32(qty.toString(16));
+    return ethCall(CONTRACT, data).then(function(cost){
+      var paid = Math.max(0, qty - FREE_PER_WALLET);
+      setNote("Confirm the mint in your wallet — " + (cost === 0 ? "FREE (gas only)" : ("$" + (0.80 * paid).toFixed(2) + " in BNB")) + " for " + qty + " guardian" + (qty > 1 ? "s" : "") + ".");
+      var mintData = MINT_SEL + pad32(qty.toString(16));
+      return window.ethereum.request({method:"eth_sendTransaction", params:[{from:account, to:CONTRACT, value:"0x" + cost.toString(16), data:mintData}]});
+    });
+  }).then(function(txHash){
+    setNote("Mint sent — " + txHash + ". Waiting for confirmation\u2026");
+    readLive();
+    setTimeout(readLive, 5000);
+  }).catch(function(e){
+    var msg = (e && e.message) ? e.message : String(e);
+    if(msg.indexOf("User denied") >= 0 || (e && e.code === 4001)) setNote("Mint cancelled in your wallet. Nothing was sent.");
+    else setNote("Mint failed: " + msg);
+  }).finally(function(){ setBusy(false); });
 }
 ["mintBtn","heroMintBtn"].forEach(function(id){
-  var b = $(id); if(b) b.addEventListener("click", mintSoon);
+  var b = $(id); if(b) b.addEventListener("click", doMint);
 });
 
 /* share on X — draft built from the live count at click time */
