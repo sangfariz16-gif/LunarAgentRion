@@ -65,14 +65,15 @@ nav.main a:hover{color:var(--gold)}
 .hero-grid{display:grid;gap:28px;align-items:center}
 @media(min-width:860px){.hero-grid{grid-template-columns:1.05fr .95fr}}
 .eyebrow{font-size:12px;font-weight:700;letter-spacing:.22em;color:var(--ice);text-transform:uppercase}
-.hero h1{font-size:clamp(38px,12vw,62px);line-height:1.05;margin:12px 0 14px}
+.hero h1{font-size:clamp(32px,10vw,62px);line-height:1.05;margin:12px 0 14px;overflow-wrap:anywhere}
 .hero p.lede{font-size:17px;color:#cfcbe8;max-width:560px}
 .hero p.lede b{color:var(--gold)}
 .hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
+@media(max-width:559px){.hero-cta{flex-direction:column}.hero-cta .btn{width:100%}}
 .hero-note{font-size:13px;color:var(--muted);margin-top:12px}
 .hero-art{position:relative}
 .frame{border:1px solid var(--gold-dim);border-radius:18px;padding:8px;background:linear-gradient(160deg,rgba(232,194,104,.14),rgba(43,26,82,.35));box-shadow:0 18px 50px rgba(0,0,0,.55),0 0 0 1px rgba(0,0,0,.4)}
-.frame img{border-radius:12px;width:100%;aspect-ratio:2/3;object-fit:cover}
+.frame img{border-radius:12px;width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center 28%}
 .frame figcaption{display:flex;justify-content:space-between;align-items:center;padding:10px 6px 4px;font-size:13px}
 .frame figcaption b{font-family:'Cinzel',Georgia,serif;color:var(--gold);font-size:15px}
 .badge{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.12em;padding:4px 9px;border-radius:999px;border:1px solid}
@@ -82,7 +83,7 @@ nav.main a:hover{color:var(--gold)}
 .badge.sr{color:#bbf7d0;border-color:#7ee2a8;background:rgba(126,226,168,.12)}
 .hero-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px}
 .hero-strip figure{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--navy2)}
-.hero-strip img{width:100%;aspect-ratio:2/3;object-fit:cover}
+.hero-strip img{width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center 28%}
 .hero-strip figcaption{font-size:11px;font-weight:700;padding:7px 8px;text-align:center;color:#d8d4ef}
 /* stats */
 .stats{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:26px 0 8px}
@@ -91,16 +92,32 @@ nav.main a:hover{color:var(--gold)}
 .stat .k{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
 .stat .v{font-family:'Cinzel',Georgia,serif;font-size:22px;font-weight:700;color:var(--gold);margin-top:5px}
 .stat .s{font-size:12px;color:var(--muted);margin-top:2px}
-/* minted bar (Piggy-style) */
-.mintbar{border:1px solid var(--gold-dim);border-radius:16px;background:linear-gradient(160deg,rgba(232,194,104,.10),rgba(11,16,48,.9));padding:18px;margin:10px 0 34px}
-.mintbar .row{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap}
-.mintbar .big{font-family:'Cinzel',Georgia,serif;font-size:26px;font-weight:800;color:var(--gold)}
-.mintbar .big small{font-size:14px;color:var(--muted);font-family:'Inter',sans-serif;font-weight:600}
-.mintbar .note{font-size:13px;color:var(--muted)}
-.bar{position:relative;height:12px;border-radius:999px;background:#1a2148;margin:14px 0 6px;overflow:visible}
-.bar>i{position:absolute;left:0;top:0;bottom:0;width:0%;border-radius:999px;background:linear-gradient(90deg,#b98a2f,#f7e3a1,#e8c268)}
-.bar .tick{position:absolute;top:-4px;bottom:-4px;width:1px;background:rgba(236,233,247,.35)}
-.bar .tick span{position:absolute;top:16px;left:-10px;font-size:10px;color:var(--muted)}
+/* moon status widget — the moon fills and glows as mints grow */
+.moon-widget{display:flex;gap:16px;align-items:center;flex-wrap:wrap;border:1px solid var(--gold-dim);border-radius:16px;background:linear-gradient(160deg,rgba(232,194,104,.10),rgba(11,16,48,.9));padding:18px;margin:10px 0 34px}
+.moon-sky{position:relative;width:112px;height:112px;flex:none;border-radius:14px;overflow:hidden;border:1px solid var(--line);background:radial-gradient(ellipse at 50% 118%,#241a56 0%,#0b1030 55%,#05081a 100%);display:grid;place-items:center}
+.moon-sky::before{content:"";position:absolute;inset:0;background:
+  radial-gradient(1px 1px at 18% 24%,#fff 50%,transparent 51%),
+  radial-gradient(1.5px 1.5px at 82% 18%,#cfe6ff 50%,transparent 51%),
+  radial-gradient(1px 1px at 74% 78%,#fff 50%,transparent 51%),
+  radial-gradient(1px 1px at 28% 84%,#ffe9c9 50%,transparent 51%),
+  radial-gradient(1px 1px at 52% 12%,#fff 50%,transparent 51%);opacity:.8}
+.moon-disc{--moon-lit:0;--moon-glow:0;position:relative;width:78px;height:78px;border-radius:50%;overflow:hidden;flex:none;
+  background:radial-gradient(circle at 38% 34%,#fffbe8 0%,#f7e3a1 42%,#e8c268 72%,#b98a2f 100%);
+  border:1px solid rgba(232,194,104,.45);
+  box-shadow:0 0 calc(var(--moon-glow)*1px) calc(var(--moon-glow)*.45px) rgba(242,212,126,.8),0 0 18px rgba(232,194,104,.18);
+  transition:box-shadow .8s ease}
+.moon-disc .crater{position:absolute;border-radius:50%;background:rgba(150,110,40,.32)}
+.moon-disc .c1{width:12px;height:12px;left:22%;top:30%}
+.moon-disc .c2{width:8px;height:8px;left:56%;top:52%}
+.moon-disc .c3{width:6px;height:6px;left:38%;top:66%}
+.moon-disc .c4{width:9px;height:9px;left:64%;top:24%}
+.moon-shadow{position:absolute;inset:0;border-radius:50%;background:radial-gradient(circle at 62% 42%,#161d42 0%,#0a0f2c 70%);transform:translateX(calc(var(--moon-lit)*106%));transition:transform .9s ease}
+.moon-info{flex:1;min-width:170px}
+.moon-info .big{font-family:'Cinzel',Georgia,serif;font-size:24px;font-weight:800;color:var(--gold);line-height:1.15}
+.moon-info .big small{font-size:14px;color:var(--muted);font-family:'Inter',sans-serif;font-weight:600}
+.moon-info .sub{font-size:13px;color:var(--muted);margin-top:3px}
+.moon-info .price{font-size:13.5px;font-weight:700;color:var(--ice);margin-top:7px}
+.moon-info .phase{font-size:12px;color:var(--pink);font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-top:3px}
 /* sections */
 section{padding:44px 0}
 section h2{font-size:clamp(26px,7vw,36px);margin-bottom:8px}
@@ -115,14 +132,15 @@ section .sub{color:var(--muted);max-width:640px;margin-bottom:22px}
 .step p{font-size:14px;color:var(--muted)}
 .step code{color:var(--ice);font-size:13px}
 /* collection */
-.gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
-@media(min-width:760px){.gallery{grid-template-columns:repeat(4,1fr)}}
+.gallery{display:grid;grid-template-columns:1fr;gap:16px}
+@media(min-width:640px){.gallery{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1024px){.gallery{grid-template-columns:repeat(4,1fr)}}
 .card{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--navy2);display:flex;flex-direction:column}
-.card img{width:100%;aspect-ratio:2/3;object-fit:cover}
-.card .body{padding:13px 13px 15px;display:flex;flex-direction:column;gap:6px;flex:1}
+.card img{width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center 28%}
+.card .body{padding:14px 14px 15px;display:flex;flex-direction:column;gap:6px;flex:1}
 .card .top{display:flex;justify-content:space-between;align-items:center;gap:8px}
-.card h3{font-size:16px;color:#f2ecd4}
-.card .title{font-size:12px;color:var(--muted)}
+.card h3{font-size:16px;color:#f2ecd4;white-space:nowrap}
+.card .title{font-size:12px;color:var(--muted);min-height:38px;display:flex;align-items:flex-start}
 .card .meta{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-top:auto;padding-top:8px;border-top:1px dashed rgba(232,194,104,.25)}
 .card .meta b{color:var(--gold)}
 /* tokenomics */
@@ -218,24 +236,28 @@ footer .f-logo{font-family:'Cinzel',Georgia,serif;color:var(--gold);font-size:16
   <!-- LIVE STATS (placeholders until deploy) -->
   <div class="stats" id="liveStats">
     <div class="stat"><div class="k">Minted</div><div class="v" id="statMinted">&mdash;</div><div class="s">of 4,444 &middot; preview</div></div>
-    <div class="stat"><div class="k">Price</div><div class="v" style="font-size:19px">2 FREE &middot; $0.80</div><div class="s">then $0.80 in BNB</div></div>
+    <div class="stat"><div class="k">Price</div><div class="v" style="font-size:19px">2 FREE</div><div class="s">then $0.80 in BNB</div></div>
     <div class="stat"><div class="k">Max per wallet</div><div class="v">20</div><div class="s">2 free + 18 paid</div></div>
     <div class="stat"><div class="k">Bonus token</div><div class="v" style="font-size:19px">120,000 RION</div><div class="s">per paid mint*</div></div>
   </div>
   <p class="fine" id="statNote" style="margin-top:0">Live stats activate after the contract is deployed. *RION economics are proposed — pending confirmation.</p>
 
-  <!-- PIGGY-STYLE MINTED BAR -->
-  <div class="mintbar">
-    <div class="row">
+  <!-- MOON STATUS — the moon fills and glows brighter as mints grow -->
+  <div class="moon-widget" id="moonWidget">
+    <div class="moon-sky" aria-hidden="true">
+      <div class="moon-disc" id="moonDisc">
+        <span class="crater c1"></span><span class="crater c2"></span><span class="crater c3"></span><span class="crater c4"></span>
+        <div class="moon-shadow"></div>
+      </div>
+    </div>
+    <div class="moon-info">
       <div class="big"><span id="mp-count">&mdash;</span> <small>/ 4,444 minted</small></div>
-      <div class="note" id="mp-note">Preview &middot; contract not deployed yet</div>
+      <div class="sub"><span id="mp-pct">&mdash;</span>% minted &middot; <span id="mp-left">4,444 left</span></div>
+      <div class="price">2 FREE, then $0.80 in BNB</div>
+      <div class="sub"><span id="mp-block">BNB Chain &middot; block &mdash;</span></div>
+      <div class="phase" id="moonPhase">New moon &middot; mint hasn&rsquo;t opened</div>
+      <div class="sub" id="mp-note">Preview &middot; contract not deployed yet</div>
     </div>
-    <div class="bar"><i id="mp-fill"></i>
-      <div class="tick" style="left:25%"><span>25%</span></div>
-      <div class="tick" style="left:50%"><span>50%</span></div>
-      <div class="tick" style="left:75%"><span>75%</span></div>
-    </div>
-    <div class="note"><span id="mp-left">&mdash; left</span> &middot; <span id="mp-block">BNB Chain &middot; block &mdash;</span></div>
   </div>
 
   <!-- HOW IT WORKS -->
@@ -509,22 +531,46 @@ function ethCall(to, data){
   });
 }
 
+/* moon: lit fraction + glow scale with mint progress (0..1) */
+function moonPhaseName(pct){
+  if(pct <= 0) return "New moon \u00b7 mint hasn\u2019t opened";
+  if(pct < 0.25) return "Crescent moon";
+  if(pct < 0.5) return "Half moon";
+  if(pct < 0.75) return "Gibbous moon";
+  if(pct < 1) return "Almost full moon";
+  return "Full moon \u00b7 sold out";
+}
+function updateMoon(pct){
+  pct = Math.min(1, Math.max(0, pct || 0));
+  var disc = $("moonDisc");
+  if(disc){
+    disc.style.setProperty("--moon-lit", pct.toFixed(3));
+    disc.style.setProperty("--moon-glow", String(Math.round(pct * 48)));
+  }
+  setText("moonPhase", moonPhaseName(pct));
+}
+
 function readLive(){
   if(!CONTRACT){
     setText("statMinted", "\u2014");
     setText("mp-count", "\u2014");
+    setText("mp-pct", "\u2014");
     setText("mp-left", "4,444 left");
     setText("mp-note", "Preview \u00b7 contract not deployed yet");
     setText("mp-block", "BNB Chain \u00b7 block \u2014");
+    setText("moonPhase", "New moon \u00b7 mint hasn\u2019t opened");
     setText("statNote", "Live stats activate after the contract is deployed. *RION economics are proposed \u2014 pending confirmation.");
+    updateMoon(0);
     return;
   }
   ethCall(CONTRACT, "0x18160ddd").then(function(total){
+    var pct = Math.min(1, Math.max(0, total / MAX_SUPPLY));
     setText("statMinted", String(total));
     setText("mp-count", String(total));
+    setText("mp-pct", (pct * 100).toFixed(1));
     setText("mp-left", (MAX_SUPPLY - total).toLocaleString("en-US") + " left");
-    var fill = $("mp-fill"); if(fill) fill.style.width = Math.min(100, total / MAX_SUPPLY * 100) + "%";
     setText("mp-note", total >= MAX_SUPPLY ? "Sold out" : "Mint is live");
+    updateMoon(pct);
   }).catch(function(){
     setText("statNote", "Live read failed \u2014 showing last known values, not a verified zero. Please refresh.");
   });
